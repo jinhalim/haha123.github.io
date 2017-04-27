@@ -4,4 +4,4 @@
 - 환경: 데스크탑(OSX)
 - 개발 언어: javascirpt, html, css 등등등
 
-![Alt text](/path/to/adfdafdfa.png)
+![스크린샷](/Users/jinhalim/Desktopadfdafdfa.png)
