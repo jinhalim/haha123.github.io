@@ -1,3 +1,4 @@
+
 (function(){
 
   var app = angular.module('notesApp',['angular-markdown-editable']);
@@ -34,6 +35,12 @@
       $scope.notes[i].text = note;
       $scope.notes[i].edit = false;
     };
+
+    $scope.save = function(i, note){
+      for (var i = 0; i < $scope.notes.length; i++) {
+          confirm($scope.notes[i].text)
+      }
+    }; 
   
   // End Controller
   });

@@ -36,8 +36,8 @@
   </div>
 
   <form is="iron-form" id="form" method="post" content-type="application/json" action="/api/add">
-  <input type="hidden" name="content" id="content">hi</input>
-  <button id ="saveButton">save</button>
+  <input type="hidden" name="content" id="content"></input>
+  <button id ="saveButton" ng-change="save(notes.length - $index - 1,note.text)">save</button>
   </form>
   
 </div>
