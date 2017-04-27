@@ -8,7 +8,9 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var users = require('./routes/users');
 
+var rest_api = require('./routes/api');
 var app = express();
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -24,7 +26,23 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
-
+app.all('/api/add', function (req, res, next) {
+	console.log('Add API is called...');
+	api = new rest_api();	
+	result = api.write(req);
+	if (result) {
+		res.json({success: true})
+	}
+})
+app.all('/api/list', function (req, res, next) {
+	console.log('List API is called...');
+	api = new rest_api();
+	var result = api.list(req);
+	console.log("result:" + result)
+	if (result) {
+		res.json({success: true, item: result})
+	}
+});	
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
