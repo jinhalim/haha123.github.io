@@ -9,9 +9,23 @@
     "body-parser": "~1.16.0",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.0",
+    "electron": "^1.6.6",
     "express": "~4.14.1",
     "jade": "~1.11.0",
     "morgan": "~1.7.0",
     "serve-favicon": "~2.3.2"
-  }
+  },
+  "main": "app.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aldehf420/WEBegin.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aldehf420/WEBegin/issues"
+  },
+  "homepage": "https://github.com/aldehf420/WEBegin#readme",
+  "description": ""
 }

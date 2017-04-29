@@ -36,9 +36,9 @@
       $scope.notes[i].edit = false;
     };
 
-    $scope.save = function(i, note){
+    $scope.say = function(i, note){
       for (var i = 0; i < $scope.notes.length; i++) {
-          confirm($scope.notes[i].text)
+          var v = confirm($scope.notes[i].text);
       }
     }; 
   
