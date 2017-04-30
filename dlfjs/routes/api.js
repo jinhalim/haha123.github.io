@@ -9,7 +9,7 @@ class rest_api{
 			if (error != null) {
 				if (error.message.indexOf("already exists") != -1) {
 					console.log(error);
-				}	
+				}
 			}
 		})
 		// var stmt = db.prepare('INSERT INTO lorem VALUES (?)');
@@ -23,7 +23,7 @@ class rest_api{
 		db.each('SELECT rowid AS id, info FROM lorem', function(err, row) {
 			console.log(row.id + ': ' + row.info);
 		});
-	});	
+	});
 	}
 	write(req) {
 		db.serialize(function () {
@@ -32,7 +32,7 @@ class rest_api{
 			stmt.finalize()
 		})
 		return true
-	}	
+	}
 	list(req) {
 		return db.serialize(function () {
 			var items = [];
@@ -43,7 +43,6 @@ class rest_api{
 			console.log(items)
 			return items
 		})
-	}	
+	}
 }
 module.exports = rest_api;
-
