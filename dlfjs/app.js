@@ -12,6 +12,7 @@ var rest_api = require('./routes/api');
 var app = express();
 
 
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -50,6 +51,7 @@ app.use(function(req, res, next) {
   next(err);
 });
 
+
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
@@ -60,10 +62,9 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
 var sqlite3 = require('sqlite3').verbose();
-// var db = new sqlite3.Database('abcd');
-var db = new sqlite3.Database(':memory:');
+var db = new sqlite3.Database('abcd');
+// var db = new sqlite3.Database(':memory:');
 db.serialize(function() {
 	db.run("CREATE TABLE user (id INT, dt TEXT)");
 
@@ -80,8 +81,9 @@ db.serialize(function() {
 			console.log("User id : "+row.id, row.dt);
 	});
 });
-
 db.close();
+
+
 
 // const {app, BrowserWindow} = require('electron')
 // const path = require('path')
