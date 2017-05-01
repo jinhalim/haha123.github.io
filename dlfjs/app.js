@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 var index = require('./routes/index');
 var users = require('./routes/users');
 
-var rest_api = require('./routes/api');
+var api = require('./routes/api');
 var app = express();
 
 
@@ -27,6 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/api',api);
 app.all('/api/add', function (req, res, next) {
 	console.log('Add API is called...');
 	api = new rest_api();
@@ -62,27 +63,27 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-var sqlite3 = require('sqlite3').verbose();
-var db = new sqlite3.Database('abcd');
-// var db = new sqlite3.Database(':memory:');
-db.serialize(function() {
-	db.run("CREATE TABLE user (id INT, dt TEXT)");
-
-	var stmt = db.prepare("INSERT INTO user VALUES (?,?)");
-	for (var i = 0; i < 10; i++) {
-
-	var d = new Date();
-	var n = d.toLocaleTimeString();
-	stmt.run(i, n);
-	}
-	stmt.finalize();
-
-	db.each("SELECT id, dt FROM user", function(err, row) {
-			console.log("User id : "+row.id, row.dt);
-	});
-});
-db.close();
-
+// var sqlite3 = require('sqlite3').verbose();
+// var db = new sqlite3.Database('abcd');
+// // var db = new sqlite3.Database(':memory:');
+// db.serialize(function() {
+// 	db.run("CREATE TABLE user (id INT, dt TEXT)");
+//
+// 	var stmt = db.prepare("INSERT INTO user VALUES (?,?)");
+// 	for (var i = 0; i < 10; i++) {
+//
+// 	var d = new Date();
+// 	var n = d.toLocaleTimeString();
+// 	stmt.run(i, n);
+// 	}
+// 	stmt.finalize();
+//
+// 	db.each("SELECT id, dt FROM user", function(err, row) {
+// 			console.log("User id : "+row.id, row.dt);
+// 	});
+// });
+// db.close();
+//
 
 
 // const {app, BrowserWindow} = require('electron')
